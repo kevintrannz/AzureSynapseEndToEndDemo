@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "sywsauesynapsedemo1"
+		},
+		"SynapseDedicatedPoolLS_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=\"@{concat(linkedService().ServerName,'.sql.azuresynapse.net')}\";Initial Catalog=@{linkedService().DatabaseName}"
+		},
+		"sywsauesynapsedemo1-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:sywsauesynapsedemo1.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"Source_Dataset_LS_sasUri": {
+			"value": ""
+		},
+		"StorageLS_properties_typeProperties_url": {
+			"value": "@{concat('https://',linkedService().StorageName,'.dfs.core.windows.net')}"
+		},
+		"sywsauesynapsedemo1-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://stauesynapsedemo1.dfs.core.windows.net/"
+		}
+	}
+}
