@@ -156,6 +156,9 @@
 							},
 							"wildcardFileName": "*.parquet",
 							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "ParquetReadSettings"
 						}
 					},
 					"sink": {
@@ -595,7 +598,7 @@
 		"parameters": {
 			"StorageName": {
 				"type": "string",
-				"defaultValue": "synapsee2elake"
+				"defaultValue": "stauesynapsedemo1"
 			},
 			"DatabaseName": {
 				"type": "string",
@@ -603,11 +606,11 @@
 			},
 			"ServerName": {
 				"type": "string",
-				"defaultValue": "synapsee2e"
+				"defaultValue": "syauesql"
 			},
 			"SparkPoolName": {
 				"type": "string",
-				"defaultValue": "synapsee2espark"
+				"defaultValue": "syauespark "
 			},
 			"DatasetSize": {
 				"type": "string",
