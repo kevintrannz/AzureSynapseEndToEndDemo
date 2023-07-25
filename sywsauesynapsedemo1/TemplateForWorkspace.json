@@ -1007,7 +1007,7 @@
 				"parameters": {
 					"StorageName": {
 						"type": "string",
-						"defaultValue": "synapsee2elake"
+						"defaultValue": "stauesynapsedemo1"
 					},
 					"DatabaseName": {
 						"type": "string",
@@ -1015,11 +1015,11 @@
 					},
 					"ServerName": {
 						"type": "string",
-						"defaultValue": "synapsee2e"
+						"defaultValue": "syauesql"
 					},
 					"SparkPoolName": {
 						"type": "string",
-						"defaultValue": "synapsee2espark"
+						"defaultValue": "syauespark"
 					},
 					"DatasetSize": {
 						"type": "string",
@@ -1202,6 +1202,9 @@
 									},
 									"wildcardFileName": "*.parquet",
 									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "ParquetReadSettings"
 								}
 							},
 							"sink": {
@@ -1647,7 +1650,7 @@
 				"parameters": {
 					"StorageName": {
 						"type": "string",
-						"defaultValue": "synapsee2elake"
+						"defaultValue": "stauesynapsedemo1"
 					},
 					"DatabaseName": {
 						"type": "string",
@@ -1655,11 +1658,11 @@
 					},
 					"ServerName": {
 						"type": "string",
-						"defaultValue": "synapsee2e"
+						"defaultValue": "syauesql"
 					},
 					"SparkPoolName": {
 						"type": "string",
-						"defaultValue": "synapsee2espark"
+						"defaultValue": "syauespark "
 					},
 					"DatasetSize": {
 						"type": "string",
@@ -3000,7 +3003,7 @@
 					"name": "Exploration"
 				},
 				"content": {
-					"query": "SELECT TOP (100) [Claim_id]\n,[insurance_coverage.display]\n,[insurance_focal]\n,[insurance_sequence]\n FROM [fhirdbexploration].[dbo].[claiminsurance]\n\n SELECT TOP (100) [Claim_id]\n,[procedure_reference]\n,[procedure_sequence]\n FROM [fhirdbexploration].[dbo].[claimprocedure]\n\n SELECT TOP (100) [Claim_id]\n,[diagnosis_reference]\n,[diagnosis_sequence]\n FROM [fhirdbexploration].[dbo].[patientdianosis]",
+					"query": "    SELECT TOP (100) [Claim_id]\n,[insurance_coverage.display]\n,[insurance_focal]\n,[insurance_sequence]\n FROM [fhirdbexploration].[dbo].[claiminsurance]\n\n SELECT TOP (100) [Claim_id]\n,[procedure_reference]\n,[procedure_sequence]\n FROM [fhirdbexploration].[dbo].[claimprocedure]\n\n SELECT TOP (100) [Claim_id]\n,[diagnosis_reference]\n,[  ]\n FROM [fhirdbexploration].[dbo].[patientdianosis]",
 					"metadata": {
 						"language": "sql"
 					},
@@ -3569,6 +3572,7 @@
 					"executorMemory": "28g",
 					"executorCores": 4,
 					"numExecutors": 2,
+					"runAsWorkspaceSystemIdentity": false,
 					"conf": {
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
@@ -3593,12 +3597,14 @@
 						"endpoint": "https://sywsauesynapsedemo1.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/syauespark",
 						"auth": {
 							"type": "AAD",
-							"authResource": "https://dev.azuresynapse.net"
+							"authResource": "https://dev.azuresynapse.net",
+							"authHeader": null
 						},
 						"sparkVersion": "3.1",
 						"nodeCount": 5,
 						"cores": 8,
-						"memory": 56
+						"memory": 56,
+						"extraHeader": null
 					},
 					"sessionKeepAliveTimeout": 30
 				},
@@ -3614,8 +3620,7 @@
 							"StorageName = \"medicaldl\"\r\n",
 							"DatasetSize = \"1tb\""
 						],
-						"outputs": [],
-						"execution_count": null
+						"outputs": []
 					},
 					{
 						"cell_type": "code",
@@ -3635,8 +3640,7 @@
 							"processed_location = \"abfss://processed@\" + StorageName+ \".dfs.core.windows.net/fhir/\"+ DatasetSize +\"/\"\r\n",
 							"write_mode=\"overwrite\""
 						],
-						"outputs": [],
-						"execution_count": null
+						"outputs": []
 					},
 					{
 						"cell_type": "code",
@@ -3657,8 +3661,7 @@
 							"#display(Claim_df.limit(10))\r\n",
 							"#Claim_df.count()"
 						],
-						"outputs": [],
-						"execution_count": null
+						"outputs": []
 					}
 				]
 			},
@@ -3684,6 +3687,7 @@
 					"executorMemory": "28g",
 					"executorCores": 4,
 					"numExecutors": 2,
+					"runAsWorkspaceSystemIdentity": false,
 					"conf": {
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
@@ -3708,12 +3712,14 @@
 						"endpoint": "https://sywsauesynapsedemo1.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/syauespark",
 						"auth": {
 							"type": "AAD",
-							"authResource": "https://dev.azuresynapse.net"
+							"authResource": "https://dev.azuresynapse.net",
+							"authHeader": null
 						},
 						"sparkVersion": "3.1",
 						"nodeCount": 5,
 						"cores": 8,
-						"memory": 56
+						"memory": 56,
+						"extraHeader": null
 					},
 					"sessionKeepAliveTimeout": 30
 				},
@@ -3881,6 +3887,7 @@
 					"executorMemory": "28g",
 					"executorCores": 4,
 					"numExecutors": 2,
+					"runAsWorkspaceSystemIdentity": false,
 					"conf": {
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
@@ -3905,12 +3912,14 @@
 						"endpoint": "https://sywsauesynapsedemo1.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/syauespark",
 						"auth": {
 							"type": "AAD",
-							"authResource": "https://dev.azuresynapse.net"
+							"authResource": "https://dev.azuresynapse.net",
+							"authHeader": null
 						},
 						"sparkVersion": "3.1",
 						"nodeCount": 5,
 						"cores": 8,
-						"memory": 56
+						"memory": 56,
+						"extraHeader": null
 					},
 					"sessionKeepAliveTimeout": 30
 				},
@@ -3935,8 +3944,7 @@
 							"StorageName = \"medicaldl\"\r\n",
 							"DatasetSize = \"1tb\""
 						],
-						"outputs": [],
-						"execution_count": null
+						"outputs": []
 					},
 					{
 						"cell_type": "code",
@@ -4286,6 +4294,7 @@
 					"executorMemory": "28g",
 					"executorCores": 4,
 					"numExecutors": 2,
+					"runAsWorkspaceSystemIdentity": false,
 					"conf": {
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
@@ -4310,13 +4319,14 @@
 						"endpoint": "https://sywsauesynapsedemo1.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/syauespark",
 						"auth": {
 							"type": "AAD",
-							"authResource": "https://dev.azuresynapse.net"
+							"authResource": "https://dev.azuresynapse.net",
+							"authHeader": null
 						},
 						"sparkVersion": "3.1",
 						"nodeCount": 5,
 						"cores": 8,
 						"memory": 56,
-						"automaticScaleJobs": false
+						"extraHeader": null
 					},
 					"sessionKeepAliveTimeout": 30
 				},
@@ -4353,8 +4363,7 @@
 							"processed_location = \"abfss://processed@\" + StorageName + \".dfs.core.windows.net/fhir/\"+ DatasetSize +\"/\"\r\n",
 							"write_mode=\"overwrite\""
 						],
-						"outputs": [],
-						"execution_count": null
+						"outputs": []
 					},
 					{
 						"cell_type": "code",
@@ -4489,6 +4498,74 @@
 							"patient_df.write.mode(write_mode).parquet(processed_location+\"Patient/\")\r\n",
 							"#display(patient_df.limit(10))\r\n",
 							"#patient_df.count()"
+						],
+						"outputs": [],
+						"execution_count": null
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/Spark PDF Parser')]",
+			"type": "Microsoft.Synapse/workspaces/notebooks",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"folder": {
+					"name": "PDF"
+				},
+				"nbformat": 4,
+				"nbformat_minor": 2,
+				"bigDataPool": {
+					"referenceName": "syauespark",
+					"type": "BigDataPoolReference"
+				},
+				"sessionProperties": {
+					"driverMemory": "56g",
+					"driverCores": 8,
+					"executorMemory": "56g",
+					"executorCores": 8,
+					"numExecutors": 2,
+					"conf": {
+						"spark.dynamicAllocation.enabled": "false",
+						"spark.dynamicAllocation.minExecutors": "2",
+						"spark.dynamicAllocation.maxExecutors": "2",
+						"spark.autotune.trackingId": "27a7fea1-6596-4307-b5b4-1f9af38b7a42"
+					}
+				},
+				"metadata": {
+					"saveOutput": true,
+					"enableDebugMode": false,
+					"kernelspec": {
+						"name": "synapse_pyspark",
+						"display_name": "python"
+					},
+					"language_info": {
+						"name": "python"
+					},
+					"a365ComputeOptions": {
+						"id": "/subscriptions/5afe30f3-87f3-400a-ab8a-b322b6d3661a/resourceGroups/synapse-end2end-demo1/providers/Microsoft.Synapse/workspaces/sywsauesynapsedemo1/bigDataPools/syauespark",
+						"name": "syauespark",
+						"type": "Spark",
+						"endpoint": "https://sywsauesynapsedemo1.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/syauespark",
+						"auth": {
+							"type": "AAD",
+							"authResource": "https://dev.azuresynapse.net"
+						},
+						"sparkVersion": "3.1",
+						"nodeCount": 5,
+						"cores": 8,
+						"memory": 56,
+						"automaticScaleJobs": false
+					},
+					"sessionKeepAliveTimeout": 30
+				},
+				"cells": [
+					{
+						"cell_type": "code",
+						"metadata": {},
+						"source": [
+							"test"
 						],
 						"outputs": [],
 						"execution_count": null
