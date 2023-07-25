@@ -1,0 +1,63 @@
+{
+	"name": "Spark PDF Parser",
+	"properties": {
+		"folder": {
+			"name": "PDF"
+		},
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "syauespark",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "56g",
+			"driverCores": 8,
+			"executorMemory": "56g",
+			"executorCores": 8,
+			"numExecutors": 2,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "31e45e1f-4ba0-41ec-a442-288f159ddd1a"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "python"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/5afe30f3-87f3-400a-ab8a-b322b6d3661a/resourceGroups/synapse-end2end-demo1/providers/Microsoft.Synapse/workspaces/sywsauesynapsedemo1/bigDataPools/syauespark",
+				"name": "syauespark",
+				"type": "Spark",
+				"endpoint": "https://sywsauesynapsedemo1.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/syauespark",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "3.1",
+				"nodeCount": 5,
+				"cores": 8,
+				"memory": 56,
+				"automaticScaleJobs": false
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"source": [
+					"test"
+				],
+				"execution_count": null
+			}
+		]
+	}
+}
