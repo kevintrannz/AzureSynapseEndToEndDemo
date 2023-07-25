@@ -16,6 +16,7 @@
 			"executorMemory": "28g",
 			"executorCores": 4,
 			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
 			"conf": {
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
@@ -40,13 +41,14 @@
 				"endpoint": "https://sywsauesynapsedemo1.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/syauespark",
 				"auth": {
 					"type": "AAD",
-					"authResource": "https://dev.azuresynapse.net"
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
 				},
 				"sparkVersion": "3.1",
 				"nodeCount": 5,
 				"cores": 8,
 				"memory": 56,
-				"automaticScaleJobs": false
+				"extraHeader": null
 			},
 			"sessionKeepAliveTimeout": 30
 		},
@@ -61,8 +63,7 @@
 				"source": [
 					"StorageName = \"medicaldl\"\r\n",
 					"DatasetSize = \"1tb\""
-				],
-				"execution_count": null
+				]
 			},
 			{
 				"cell_type": "code",
@@ -81,8 +82,7 @@
 					"raw_location = \"abfss://raw@\" + StorageName + \".dfs.core.windows.net/fhir_ndjson/\"+ DatasetSize +\"/*/\"\r\n",
 					"processed_location = \"abfss://processed@\" + StorageName+ \".dfs.core.windows.net/fhir/\"+ DatasetSize +\"/\"\r\n",
 					"write_mode=\"overwrite\""
-				],
-				"execution_count": null
+				]
 			},
 			{
 				"cell_type": "code",
@@ -102,8 +102,7 @@
 					"Claim_df.write.mode(write_mode).parquet(processed_location+\"Claim/\")\r\n",
 					"#display(Claim_df.limit(10))\r\n",
 					"#Claim_df.count()"
-				],
-				"execution_count": null
+				]
 			}
 		]
 	}

@@ -16,11 +16,12 @@
 			"executorMemory": "28g",
 			"executorCores": 4,
 			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
 			"conf": {
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "7907a6dd-026c-42a8-9430-2ea83c6977f8"
+				"spark.autotune.trackingId": "b2f3df19-7550-457d-ac8c-3d10413bbb60"
 			}
 		},
 		"metadata": {
@@ -40,13 +41,14 @@
 				"endpoint": "https://sywsauesynapsedemo1.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/syauespark",
 				"auth": {
 					"type": "AAD",
-					"authResource": "https://dev.azuresynapse.net"
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
 				},
 				"sparkVersion": "3.1",
 				"nodeCount": 5,
 				"cores": 8,
 				"memory": 56,
-				"automaticScaleJobs": false
+				"extraHeader": null
 			},
 			"sessionKeepAliveTimeout": 30
 		},
@@ -81,8 +83,7 @@
 					"raw_location = \"abfss://raw@\" + StorageName + \".dfs.core.windows.net/fhir_ndjson/\"+ DatasetSize +\"/*/\"\r\n",
 					"processed_location = \"abfss://processed@\" + StorageName + \".dfs.core.windows.net/fhir/\"+ DatasetSize +\"/\"\r\n",
 					"write_mode=\"overwrite\""
-				],
-				"execution_count": null
+				]
 			},
 			{
 				"cell_type": "code",
